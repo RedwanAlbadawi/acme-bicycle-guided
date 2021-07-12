@@ -4,7 +4,37 @@ public class SampleOutput {
 
     public static void main(String[] args) {
         //testingModel();
-        testingSerialNumberGen();
+        //testingSerialNumberGen();
+        //testingCustomOptions();
+        testingCustomOptions2();
+    }
+
+    public static void testingCustomOptions2() {
+        BikeInterface ccBike = new CrossCountryBike(new WideWheel());
+        System.out.println(ccBike);
+
+        ccBike = new WhiteTireOption(ccBike);
+        System.out.println(ccBike);
+
+        ccBike = new GoldFrameOption(ccBike);
+        System.out.println(ccBike);
+
+    }
+
+    public static void testingCustomOptions() {
+        BikeInterface touring = new TouringBike(new NormalWheel());
+        System.out.println(touring);
+
+        touring = new LeatherSeatOption(touring);
+        // ensure the frame color doesn't change
+        // AbstractBikeOption is set to CHROME
+        //touring.paint(BikeColor.Blue);
+        System.out.println(touring);
+        System.out.println(touring.getModel() + " good"); // testing other options
+
+        touring = new LeatherGripsOption(touring);
+        System.out.println(touring);
+        //TODO May need to add a method for original price for receipt print out
     }
 
     /*
