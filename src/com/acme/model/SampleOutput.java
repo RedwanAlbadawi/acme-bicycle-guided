@@ -6,7 +6,13 @@ public class SampleOutput {
         //testingModel();
         //testingSerialNumberGen();
         //testingCustomOptions();
-        testingCustomOptions2();
+        //testingCustomOptions2();
+        testPrepForSale();
+    }
+
+    public static void testPrepForSale() {
+        BikeFacade myFacade = new BikeFacade();
+        myFacade.prepareForSale(new VintageBike(new NormalWheel()));
     }
 
     public static void testingCustomOptions2() {
@@ -47,10 +53,12 @@ public class SampleOutput {
         DownhillBike bike = new DownhillBike(new WideWheel());
         SerialNumberGenerator generator =
                 SerialNumberGenerator.getInstance(bike.getModel(), bike.getStartNumber() );
+        bike.setSerialNumber(generator.getNextSerial());
         System.out.println("Next serial is " + generator.getNextSerial());
         System.out.println("Next serial is " + generator.getNextSerial());
         System.out.println("Next serial is " + generator.getNextSerial());
 
+        System.out.println("My bike serial number is " + bike.getSerialNumber());
         SerialNumberGenerator myGen =
                 SerialNumberGenerator.getInstance(bike.getModel(), generator.getRecentNumber());
         System.out.println("Next serial is " + myGen.getNextSerial());
