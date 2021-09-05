@@ -1,4 +1,6 @@
-package com.acme.model;
+package com.acme.sample;
+
+import com.acme.model.*;
 
 public class SampleOutput {
 
@@ -51,8 +53,8 @@ public class SampleOutput {
      * */
     public static void testingSerialNumberGen() {
         DownhillBike bike = new DownhillBike(new WideWheel());
-        SerialNumberGenerator generator =
-                SerialNumberGenerator.getInstance(bike.getModel(), bike.getStartNumber() );
+        SerialNumberGenerator generator = SerialNumberGenerator.getInstance();
+        generator.setModelAndStart(bike.getModel(), bike.getStartNumber());
         bike.setSerialNumber(generator.getNextSerial());
         System.out.println("Next serial is " + generator.getNextSerial());
         System.out.println("Next serial is " + generator.getNextSerial());
@@ -60,7 +62,8 @@ public class SampleOutput {
 
         System.out.println("My bike serial number is " + bike.getSerialNumber());
         SerialNumberGenerator myGen =
-                SerialNumberGenerator.getInstance(bike.getModel(), generator.getRecentNumber());
+                SerialNumberGenerator.getInstance();
+        generator.setModelAndStart(bike.getModel(), bike.getStartNumber());
         System.out.println("Next serial is " + myGen.getNextSerial());
         System.out.println("Next serial is " + myGen.getNextSerial());
         System.out.println("Next serial is " + myGen.getNextSerial());
